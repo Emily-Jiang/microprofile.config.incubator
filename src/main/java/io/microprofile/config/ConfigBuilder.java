@@ -41,19 +41,23 @@ public interface ConfigBuilder {
 	 */
      ConfigBuilder ignoreDefaultSources();
      /**
-      * Add the specified {@link ConfigSource} to the builder
-      * @param source the {@link ConfigSource}
+      * Add the {@link ConfigSource}s to the builder
+      * @param sources the {@link ConfigSource}
       * @return the builder
       */
-     ConfigBuilder withSource(ConfigSource source);  
+     ConfigBuilder addSource(ConfigSource... sources);  
     
      /**
-      * Add the {@link ConfigSource}s to the builder
+      * Set the {@link ConfigSource}s to the builder
       * @param sources
       * @return
       */
-     ConfigBuilder withSources(ConfigSource... sources);  
+     ConfigBuilder withSources(ConfigSources... sources);  
     
+     /**
+      * Aggregate all resources and sort them according to their ordinal and then build a {@link Config} object. 
+      * @return the {@link Config} object
+      */
      Config build();
     
 }

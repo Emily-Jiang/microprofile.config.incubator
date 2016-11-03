@@ -56,7 +56,7 @@ public interface Config {
 	 * @param propertyName the property name
 	 * @param newValue the property value
 	 */
-	void SetProperty(String propertyName, String newValue);
+	void setProperty(String propertyName, String newValue);
 	
 	/**
 	 * Remove the property with the specified name. 
