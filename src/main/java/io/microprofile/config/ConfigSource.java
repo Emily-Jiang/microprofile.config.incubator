@@ -39,7 +39,7 @@ public interface ConfigSource {
 	 * Return the properties in this config source
 	 * @return the map containing the properties in this config source
 	 */
-	Map<String, String> getProperites();
+	Map<String, String> getProperties();
 	/**
 	 * Return the ordinal for this config source. The higher the more important. If a property is specified in multiple config sources, the value 
 	 * in the config source with the highest ordinal will be used.

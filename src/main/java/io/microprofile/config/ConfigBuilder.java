@@ -21,6 +21,8 @@
 
 package io.microprofile.config;
 
+import java.util.Collection;
+
 /**
  * The builder for creating an instance of a {@code Config} by adding a number of config sources
  * @author Emily
@@ -48,12 +50,30 @@ public interface ConfigBuilder {
      ConfigBuilder addSource(ConfigSource... sources);  
     
      /**
-      * Set the {@link ConfigSource}s to the builder
+      * Set the {@link ConfigSources} to the builder
       * @param sources
-      * @return
+      * @return the builder
       */
-     ConfigBuilder withSources(ConfigSources... sources);  
+     ConfigBuilder withSources(ConfigSources sources);  
     
+     /**
+      * Add a converter {@link Converter} to the builder
+      * @param converter the converter
+      * @param convererTyper the class type that the converter is supposed to convert from a string 
+      * @return the builder
+      */
+     <T> ConfigBuilder addConverter(Converter<T> converter, Class<?> converterType);
+     /**
+      * Return the collection of {@link ConfigSource}s.
+      * @return the collection of {@link ConfigSource}s.
+      */
+     public Collection<ConfigSource> getSources();
+     /**
+      * Return the collection of {@link Converter}s.
+      * @return the collection of {@link Converter}s.
+      */
+     public Collection<Converter<?>> getConverters();
+     
      /**
       * Aggregate all resources and sort them according to their ordinal and then build a {@link Config} object. 
       * @return the {@link Config} object
