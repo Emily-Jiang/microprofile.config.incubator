@@ -31,7 +31,7 @@ import java.util.Collection;
 public interface ConfigBuilder {
    
 	/**
-	 * Ignore the default config sources including:
+	 * Remove the default config sources including:
 	 * <ol> 
 	 * <li>System properties</li>
 	 * <li>Environment properties</li>
@@ -39,22 +39,28 @@ public interface ConfigBuilder {
 	 * <li>/META-INF/config.xml</li>
 	 * <li>/META-INF/config.json</li>
 	 * </ol>
+	 * 
 	 * @return the ConfigBuilder without the default config sources
 	 */
-     ConfigBuilder ignoreDefaultSources();
+     ConfigBuilder removeDefaultSources();
+     /**
+      * Remove all config sources from the builder and return an empty config builder
+      * @return an empty {@link ConfigBuilder}
+      */
+     ConfigBuilder removeAllSources();
      /**
       * Add the {@link ConfigSource}s to the builder
       * @param sources the {@link ConfigSource}
       * @return the builder
       */
-     ConfigBuilder addSource(ConfigSource... sources);  
+     ConfigBuilder addSources(ConfigSource... sources);  
     
      /**
-      * Set the {@link ConfigSources} to the builder
+      * Add the {@link ConfigSources} to the builder.
       * @param sources
       * @return the builder
       */
-     ConfigBuilder withSources(ConfigSources sources);  
+     ConfigBuilder addSources(ConfigSources sources);  
     
      /**
       * Add a converter {@link Converter} to the builder

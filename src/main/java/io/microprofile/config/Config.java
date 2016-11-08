@@ -22,6 +22,7 @@ package io.microprofile.config;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.net.URL;
 import java.util.Collection;
 
 /**
@@ -33,29 +34,8 @@ import java.util.Collection;
  * @author Emily
  *
  */
-public interface Config {
-	/**
-	 * Return the resolved property value as a string for the specified property name
-	 * @param propertyName the property name
-	 * @return the property value from the {@link ConfigSource} with the highest ordinal or {@code null} if the specified property 
-	 * does not exist.
-	 */
-	String getProperty(String propertyName);
+public interface Config {	
 	
-	/**
-	 * Return the resolved property value as a string for the specified property name
-	 * @param propertyName the property name
-	 * @return the property value from the {@link ConfigSource} with the highest ordinal or the defaultValue if the specified property 
-	 * does not exist.
-	 */
-	String getProperty(String propertyName, String defaultValue);
-
-	/**
-	 * Remove the property with the specified name. 
-	 * @param propertyName 
-	 * @return the value of the specified property that has been removed
-	 */
-	Object removeProperty(String propertyName);
 	/**
 	 * Return the resolved property value with the specified type for the specified property name
 	 * @param propertyName 
@@ -403,6 +383,32 @@ public interface Config {
     String getString(String propertyName);
 
     /**
+     * Get a URL associated with the given configuration propertyName.
+     * If the propertyName doesn't map to an existing object, the default value
+     * is returned.
+     *
+     * @param propertyName The configuration propertyName.
+     * @param defaultValue The default value.
+     * @return The associated URL if propertyName is found and has valid
+     *         format, default value otherwise.
+     *
+     * @throws IllegalArgumentException is thrown if the propertyName maps to an object that
+     *         is not a URL.
+     */
+    URL getURL(String propertyName, URL defaultValue);
+	
+    /**
+     * Get a URL associated with the given configuration propertyName or {@code null} if the property does not exist.
+     *
+     * @param propertyName The configuration propertyName.
+     * @return The associated URL or {@code null} if the property does not exist.
+     *
+     * @throws IllegalArgumentException is thrown if the propertyName maps to an object that
+     *         is not a URL.
+     */
+    URL getURL(String propertyName);
+
+    /**
      * Get a string associated with the given configuration propertyName.
      * If the propertyName doesn't map to an existing object, the default value
      * is returned.
@@ -416,7 +422,6 @@ public interface Config {
      *         is not a String.
      */
     String getString(String propertyName, String defaultValue);
-	
 	/**
 	 * Return a collection of property names
 	 * @return the property names
