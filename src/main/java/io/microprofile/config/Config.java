@@ -22,6 +22,7 @@ package io.microprofile.config;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.net.URL;
 import java.util.Collection;
 
 /**
@@ -382,6 +383,32 @@ public interface Config {
     String getString(String propertyName);
 
     /**
+     * Get a URL associated with the given configuration propertyName.
+     * If the propertyName doesn't map to an existing object, the default value
+     * is returned.
+     *
+     * @param propertyName The configuration propertyName.
+     * @param defaultValue The default value.
+     * @return The associated URL if propertyName is found and has valid
+     *         format, default value otherwise.
+     *
+     * @throws IllegalArgumentException is thrown if the propertyName maps to an object that
+     *         is not a URL.
+     */
+    URL getURL(String propertyName, URL defaultValue);
+	
+    /**
+     * Get a URL associated with the given configuration propertyName or {@code null} if the property does not exist.
+     *
+     * @param propertyName The configuration propertyName.
+     * @return The associated URL or {@code null} if the property does not exist.
+     *
+     * @throws IllegalArgumentException is thrown if the propertyName maps to an object that
+     *         is not a URL.
+     */
+    String getURL(String propertyName);
+
+    /**
      * Get a string associated with the given configuration propertyName.
      * If the propertyName doesn't map to an existing object, the default value
      * is returned.
@@ -395,7 +422,6 @@ public interface Config {
      *         is not a String.
      */
     String getString(String propertyName, String defaultValue);
-	
 	/**
 	 * Return a collection of property names
 	 * @return the property names
