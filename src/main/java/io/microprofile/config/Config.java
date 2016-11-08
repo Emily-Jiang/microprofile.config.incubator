@@ -406,7 +406,7 @@ public interface Config {
      * @throws IllegalArgumentException is thrown if the propertyName maps to an object that
      *         is not a URL.
      */
-    String getURL(String propertyName);
+    URL getURL(String propertyName);
 
     /**
      * Get a string associated with the given configuration propertyName.
