@@ -49,13 +49,7 @@ public interface Config {
 	 * does not exist.
 	 */
 	String getProperty(String propertyName, String defaultValue);
-
-	/**
-	 * Remove the property with the specified name. 
-	 * @param propertyName 
-	 * @return the value of the specified property that has been removed
-	 */
-	Object removeProperty(String propertyName);
+	
 	/**
 	 * Return the resolved property value with the specified type for the specified property name
 	 * @param propertyName 
