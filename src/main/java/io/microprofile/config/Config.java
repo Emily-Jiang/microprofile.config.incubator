@@ -33,22 +33,7 @@ import java.util.Collection;
  * @author Emily
  *
  */
-public interface Config {
-	/**
-	 * Return the resolved property value as a string for the specified property name
-	 * @param propertyName the property name
-	 * @return the property value from the {@link ConfigSource} with the highest ordinal or {@code null} if the specified property 
-	 * does not exist.
-	 */
-	String getProperty(String propertyName);
-	
-	/**
-	 * Return the resolved property value as a string for the specified property name
-	 * @param propertyName the property name
-	 * @return the property value from the {@link ConfigSource} with the highest ordinal or the defaultValue if the specified property 
-	 * does not exist.
-	 */
-	String getProperty(String propertyName, String defaultValue);
+public interface Config {	
 	
 	/**
 	 * Return the resolved property value with the specified type for the specified property name
